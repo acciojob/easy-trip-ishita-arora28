@@ -22,8 +22,9 @@ public class AirportRepository {
      Map<Integer,Integer> passengerFlightMap=new HashMap<>();
      Map<Integer,List<Passenger>> flightPassengerMap=new HashMap<>();
      
-    public void addAirport(Airport airport) {
+    public String addAirport(Airport airport) {
         airportMap.put(airport.getAirportName(),airport);
+        return "SUCCESS";
     }
     public String getLargestAirportName() {
         int maxTerminals=0;
