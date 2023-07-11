@@ -97,19 +97,14 @@ public class AirportRepository {
 
 
         // }
-        City cityCheck=null;
         int count=0;
-        for(String names: airportMap.keySet()){
-            Airport airport=airportMap.get(names);
-           
-            if(airportName.equals(names)){
-                 cityCheck=airport.getCity();
-            }
-        }
-        for(Integer flightId:flightMap.keySet()){
-            Flight flight=flightMap.get(flightId);
-            if(flight.getFlightDate().equals(date) && (flight.getFromCity().equals(cityCheck) || flight.getToCity().equals(cityCheck))){
-                count++;
+        if(airportMap.containsKey(airportName)){
+            City city=airportMap.get(airportName).getCity();
+            for(Integer flightId:ticketMap.keySet()){
+                Flight f=flightMap.get(flightId);
+                if(f.getFlightDate().equals(date) && (f.getFromCity().equals(city) || f.getToCity().equals(city))){
+                    count+=ticketMap.get(flightId).size();
+                }
             }
         }
         return count;
