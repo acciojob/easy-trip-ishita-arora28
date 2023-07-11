@@ -1,5 +1,5 @@
-package com.driver.controllers;
 
+package com.driver.controllers;
 
 import com.driver.model.Airport;
 import com.driver.model.City;
@@ -8,6 +8,7 @@ import com.driver.model.Passenger;
 import com.driver.services.AirportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ import java.util.Objects;
 @RequestMapping("easymytrip")
 public class AirportController {
 
-    //@Autowired
-    AirportService airportService=new AirportService();
+    @Autowired
+    AirportService airportService;
     
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
@@ -56,7 +57,7 @@ public class AirportController {
     }
 
     @GetMapping("/get-number-of-people-on-airport-on/{date}")
-    public int getNumberOfPeopleOn(@PathVariable("date") Date date,@RequestParam("airportName")String airportName){
+    public int getNumberOfPeopleOn(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,@RequestParam("airportName")String airportName){
 
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
