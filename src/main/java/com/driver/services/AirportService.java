@@ -17,8 +17,8 @@ public class AirportService {
     @Autowired
     AirportRepository airportRepository;
     
-    public String addAirport(Airport airport) {
-        return airportRepository.addAirport(airport);
+    public void addAirport(Airport airport) {
+        airportRepository.addAirport(airport);
     }
 
     public String getLargestAirportName() {

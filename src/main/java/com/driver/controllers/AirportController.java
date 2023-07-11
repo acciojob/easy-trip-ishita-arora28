@@ -18,18 +18,19 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("airport")
+@RequestMapping("easymytrip")
 public class AirportController {
 
-    @Autowired
-    AirportService airportService;
+    //@Autowired
+    AirportService airportService=new AirportService();
     
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
-       return airportService.addAirport(airport);
+       airportService.addAirport(airport);
+       return "SUCCESS";
 
        
     }
